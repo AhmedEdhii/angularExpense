@@ -1,0 +1,35 @@
+<form [formGroup]="loginForm" (ngSubmit)="login()" class="border p-3 rounded-3">
+    <div class="text-center p-2 mb-3 bg-light">
+        <div class="fs-3">Login Form</div>
+    </div>
+    <div class="mb-3">
+        <label for="Email" class="form-label">Email address</label>
+        <input type="email" class="form-control" formControlName="email"> 
+        <div class="form-text text-danger" *ngIf="Email.errors?.['required'] && (Email.touched || Email.dirty)">
+            Email is Required.
+        </div>
+        <div class="form-text text-danger" *ngIf="Email.errors?.['email'] && (Email.touched || Email.dirty)">
+            Email is Invalid.
+        </div>
+    </div>
+    <div class="mb-3">
+        <label for="Password" class="form-label">Password</label>
+        <input type="password" class="form-control" formControlName="password">
+        <div class="form-text text-danger" *ngIf="Password.errors?.['required'] && (Password.touched || Password.dirty)">
+            Password is Required.
+        </div>
+        <div class="form-text text-danger" *ngIf="(Password.errors?.['minlength'] || Password.errors?.['maxlength']) && (Password.touched || Password.dirty)">
+            Password should be 6-14 characters.
+        </div>
+    </div>
+    <div class="mb-3">
+        <label for="cPassword" class="form-label">Confirm Password</label>
+        <input type="password" class="form-control" formControlName="cpassword">
+        <div class="form-text text-danger" [ngStyle]="{'display': matchPass}">
+            Password doesnot match.
+        </div>
+    </div>
+    <div class="div-center">
+        <button type="submit" class="btn btn-dark w-25" [disabled]="loginForm.invalid">Login</button>
+    </div>
+</form>

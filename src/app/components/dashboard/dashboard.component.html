@@ -1,0 +1,13 @@
+<form class="p-3" (ngSubmit)="addExpense()">
+    <div class="mb-3">
+        <label for="Description" class="form-label">Description</label>
+        <input type="description" class="form-control" name="description" [(ngModel)]="description">
+    </div>
+    <div class="mb-3">
+        <label for="Amount" class="form-label">Amount</label>
+        <input type="amount" class="form-control" name="amount" [(ngModel)]="amount">
+    </div>
+    <div class="div-center">
+        <button type="submit" class="btn btn-dark w-25">Add Expense</button>
+    </div>
+</form>
